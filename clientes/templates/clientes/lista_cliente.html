@@ -1,0 +1,37 @@
+{% extends "clientes/base.html" %}
+
+{% block title %}
+Listagem de Cliente
+{% endblock title %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        Dados do Cliente
+    </div>
+    <div class="card-body">
+        <div><h5>Nome: {{ cliente.nome }}</h5></div>
+        <div><h5>Data de Nascimento: {{ cliente.data_nascimento }}</h5></div>
+        <div><h5>Email: {{ cliente.email }}</h5></div>
+        <div><h5>Profissão: {{ cliente.profissao }}</h5></div>
+        <div><h5>Sexo: {{ cliente.sexo }}</h5></div>
+
+        <hr>
+        <h4>Endereço</h4>
+        <div><h5>Rua: {{ cliente.endereco.rua }}</h5></div>
+        <div><h5>Número: {{ cliente.endereco.numero }}</h5></div>
+        <div><h5>Complemento: {{ cliente.endereco.complemento }}</h5></div>
+        <div><h5>Bairro: {{ cliente.endereco.bairro }}</h5></div>
+        <div><h5>Cidade: {{ cliente.endereco.cidade }}</h5></div>
+        <div><h5>Estado: {{ cliente.endereco.estado }}</h5></div>
+        <div><h5>Pais: {{ cliente.endereco.pais }}</h5></div>
+
+    </div>
+    <div class="card-footer">
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-default">Voltar</a>
+    </div>
+
+</div>
+
+{% endblock content %}

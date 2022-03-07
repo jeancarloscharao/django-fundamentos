@@ -1,0 +1,50 @@
+{% extends "clientes/base.html" %}
+
+{% block title %}
+Listagem de Clientes
+{% endblock title %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        Listagem de Clientes
+    </div>
+    <div class="card-body">
+        <a href="{% url 'cadastrar_cliente' %}" class="btn btn-success">Cadastrar</a>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                <th>Sexo</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for i in clientes %}
+                <tr>
+                    <td><a href="{% url 'listar_cliente_id' i.id %}">{{ i.id }}</a></td>
+                    <td>{{ i.nome }}</td>
+                    <td>{{ i.data_nascimento | date:"d M Y" }}</td>
+                    <td>{{ i.sexo }}</td>
+                    <td>
+                        <a href="{% url 'listar_cliente_id' i.id %}" class="btn btn-sm btn-primary">Ver</a>
+                        <a href="{% url 'editar_cliente' i.id %}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{% url 'remover_cliente' i.id %}" class="btn btn-sm btn-danger">Remover</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}
